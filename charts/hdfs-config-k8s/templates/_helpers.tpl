@@ -1,5 +1,32 @@
 {{/* vim: set filetype=mustache: */}}
 {{/*
+Create a short app name.
+*/}}
+{{- define "hdfs-k8s.name" -}}
+hdfs-k8s
+{{- end -}}
+
+{{/*
+Create a fully qualified app name.
+We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+If release name contains chart name it will be used as a full name.
+*/}}
+{{- define "hdfs-k8s.fullname" -}}
+{{- if .Values.global.fullnameOverride -}}
+{{- .Values.global.fullnameOverride | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+hdfs-k8s
+{{- end -}}
+{{- end -}}
+
+{{/*
+Create chart name and version as used by the subchart label.
+*/}}
+{{- define "hdfs-k8s.subchart" -}}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{/*
 Expand the name of the chart.
 */}}
 {{- define "hdfs-config-k8s.name" -}}

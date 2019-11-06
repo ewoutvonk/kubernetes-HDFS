@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   hdfs-client-k8s:
   - apiVersion: v1
-    created: "2019-11-04T11:29:23.632651+01:00"
+    created: "2019-11-06T10:33:32.956169+01:00"
     description: A client for HDFS on Kubernetes.
-    digest: b71fd9f488ea77d05a30af5050ae8e719248e4650d0c5d4ef873f1b180a90a7b
+    digest: abd22813cfef61de6ec53613946a1d1caa1aedd89a4e986c128c297a170ee4e3
     name: hdfs-client-k8s
     urls:
     - hdfs-client-k8s-0.1.0.tgz
@@ -12,56 +12,56 @@ entries:
   hdfs-config-k8s:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-11-04T11:29:23.634134+01:00"
+    created: "2019-11-06T10:33:32.956448+01:00"
     description: A Helm chart for configuring HDFS on Kubernetes
-    digest: d3810c74a27ab361c23a159e8b7f4ba71f16b7eb2fe33de5734eb369bc6e9b3f
+    digest: e41297d7bfdcfab22219a74b5ab141efc659f02007cac04694c3974bb3d88e6a
     name: hdfs-config-k8s
     urls:
     - hdfs-config-k8s-0.1.0.tgz
     version: 0.1.0
   hdfs-datanode-k8s:
   - apiVersion: v1
-    created: "2019-11-04T11:29:23.6346+01:00"
+    created: "2019-11-06T10:33:32.956633+01:00"
     description: Datanodes for HDFS on Kubernetes.
-    digest: d18ce87d46126088b2ab1d4166f5b915a91a58f003244b39c7f5e37a9bcb6c97
+    digest: 4e2769010ded7f447a7b7f4730e5d44d29cc3cfe9e8c161221e9a5a8dda52e7b
     name: hdfs-datanode-k8s
     urls:
     - hdfs-datanode-k8s-0.1.0.tgz
     version: 0.1.0
   hdfs-journalnode-k8s:
   - apiVersion: v1
-    created: "2019-11-04T11:29:23.635018+01:00"
+    created: "2019-11-06T10:33:32.956822+01:00"
     description: Journalnode quorum used by HDFS on Kubernetes.
-    digest: 147aff5bf0b1eb0963adff707db4871ba7c731452c303541ad9b303983cf8ed4
+    digest: 70e5e0fe859fca22d1b1986d98fd10c0344ac069f8664a752f8006ed5c668fc6
     name: hdfs-journalnode-k8s
     urls:
     - hdfs-journalnode-k8s-0.1.0.tgz
     version: 0.1.0
   hdfs-krb5-k8s:
   - apiVersion: v1
-    created: "2019-11-04T11:29:23.635366+01:00"
+    created: "2019-11-06T10:33:32.957375+01:00"
     description: Kerberos server that can be used for HDFS on Kubernetes.
-    digest: 6e3e5ec9d2fe8912b15d1afbffa7fdb7d455fa08b7bc02d136c3c20b7aebf05f
+    digest: 733749f8ce1b124ef1f3393fd31015e8c8b9eb256c7e76e36f18697c82f88443
     name: hdfs-krb5-k8s
     urls:
     - hdfs-krb5-k8s-0.1.0.tgz
     version: 0.1.0
   hdfs-namenode-k8s:
   - apiVersion: v1
-    created: "2019-11-04T11:29:23.63589+01:00"
+    created: "2019-11-06T10:33:32.957774+01:00"
     description: namenodes in HDFS on Kubernetes.
-    digest: d85ae36c4c74997ee7de699d1895875d5cc10d62882344aefeaf11a66b0871e3
+    digest: 18478671ebbe5afa810f7f22ccdd892f9d158dde4c735166ff2699dc84eccf7b
     name: hdfs-namenode-k8s
     urls:
     - hdfs-namenode-k8s-0.1.0.tgz
     version: 0.1.0
   hdfs-simple-namenode-k8s:
   - apiVersion: v1
-    created: "2019-11-04T11:29:23.636294+01:00"
+    created: "2019-11-06T10:33:32.957965+01:00"
     description: Non-HA namenode for HDFS on Kubernetes.
-    digest: 6ce52052c13e34ed4d6987d8ceb9cf8ae63b89f4777ae1f3d91b76507201ebe7
+    digest: 345f6050e53ff2cdf9811292fd2106285dd5045d5e869426ff3f64dba851e1ca
     name: hdfs-simple-namenode-k8s
     urls:
     - hdfs-simple-namenode-k8s-0.1.0.tgz
     version: 0.1.0
-generated: "2019-11-04T11:29:23.630558+01:00"
+generated: "2019-11-06T10:33:32.955782+01:00"
