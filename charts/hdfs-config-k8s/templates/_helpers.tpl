@@ -168,3 +168,53 @@ since that is the only special index that helm template gives us.
 {{- printf "%s-config" $fullname | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 {{- end -}}
+
+{{- define "zookeeper-fullname" -}}
+{{- $fullname := include "hdfs-k8s.fullname" . -}}
+{{- if contains "zookeeper" $fullname -}}
+{{- printf "%s" $fullname -}}
+{{- else -}}
+{{- printf "%s-zookeeper" $fullname | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Create the domain name part of services.
+The HDFS config file should specify FQDN of services. Otherwise, Kerberos
+login may fail.
+*/}}
+{{- define "svc-domain" -}}
+{{- printf "%s.svc.cluster.local" .Release.Namespace -}}
+{{- end -}}
+
+{{- define "hdfs-k8s.journalnode.fullname" -}}
+{{- $fullname := include "hdfs-k8s.fullname" . -}}
+{{- if contains "journalnode" $fullname -}}
+{{- printf "%s" $fullname -}}
+{{- else -}}
+{{- printf "%s-journalnode" $fullname | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "hdfs-k8s.namenode.fullname" -}}
+{{- $fullname := include "hdfs-k8s.fullname" . -}}
+{{- if contains "namenode" $fullname -}}
+{{- printf "%s" $fullname -}}
+{{- else -}}
+{{- printf "%s-namenode" $fullname | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Construct the name of the namenode pod 0.
+*/}}
+{{- define "namenode-pod-0" -}}
+{{- template "hdfs-k8s.namenode.fullname" . -}}-0
+{{- end -}}
+
+{{/*
+Construct the name of the namenode pod 1.
+*/}}
+{{- define "namenode-pod-1" -}}
+{{- template "hdfs-k8s.namenode.fullname" . -}}-1
+{{- end -}}
