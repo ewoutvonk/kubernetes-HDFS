@@ -89,3 +89,82 @@ the only special index that helm template gives us.
   {{- end -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create the journalnode quorum server list.  The below uses two loops to make
+sure the last item does not have the delimiter. It uses index 0 for the last
+item since that is the only special index that helm template gives us.
+*/}}
+{{- define "journalnode-quorum" -}}
+{{- $service := include "hdfs-k8s.journalnode.fullname" . -}}
+{{- $domain := include "svc-domain" . -}}
+{{- $replicas := .Values.global.journalnodeQuorumSize | int -}}
+{{- range $i, $e := until $replicas -}}
+  {{- if ne $i 0 -}}
+    {{- printf "%s-%d.%s.%s:8485;" $service $i $service $domain -}}
+  {{- end -}}
+{{- end -}}
+{{- range $i, $e := until $replicas -}}
+  {{- if eq $i 0 -}}
+    {{- printf "%s-%d.%s.%s:8485" $service $i $service $domain -}}
+  {{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Construct the full name of the namenode statefulset member 0.
+*/}}
+{{- define "namenode-svc-0" -}}
+{{- $pod := include "namenode-pod-0" . -}}
+{{- $service := include "hdfs-k8s.namenode.fullname" . -}}
+{{- $domain := include "svc-domain" . -}}
+{{- printf "%s.%s.%s" $pod $service $domain -}}
+{{- end -}}
+
+{{/*
+Construct the full name of the namenode statefulset member 1.
+*/}}
+{{- define "namenode-svc-1" -}}
+{{- $pod := include "namenode-pod-1" . -}}
+{{- $service := include "hdfs-k8s.namenode.fullname" . -}}
+{{- $domain := include "svc-domain" . -}}
+{{- printf "%s.%s.%s" $pod $service $domain -}}
+{{- end -}}
+
+{{/*
+Create the zookeeper quorum server list.  The below uses two loops to make
+sure the last item does not have comma. It uses index 0 for the last item
+since that is the only special index that helm template gives us.
+*/}}
+{{- define "zookeeper-quorum" -}}
+{{- if .Values.global.zookeeperQuorumOverride -}}
+{{- .Values.global.zookeeperQuorumOverride -}}
+{{- else -}}
+{{- $service := include "zookeeper-fullname" . -}}
+{{- $domain := include "svc-domain" . -}}
+{{- $replicas := .Values.global.zookeeperQuorumSize | int -}}
+{{- range $i, $e := until $replicas -}}
+  {{- if ne $i 0 -}}
+    {{- printf "%s-%d.%s-headless.%s:2181," $service $i $service $domain -}}
+  {{- end -}}
+{{- end -}}
+{{- range $i, $e := until $replicas -}}
+  {{- if eq $i 0 -}}
+    {{- printf "%s-%d.%s-headless.%s:2181" $service $i $service $domain -}}
+  {{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "hdfs-k8s.client.name" -}}
+{{- template "hdfs-k8s.name" . -}}-client
+{{- end -}}
+
+{{- define "hdfs-k8s.config.fullname" -}}
+{{- $fullname := include "hdfs-k8s.fullname" . -}}
+{{- if contains "config" $fullname -}}
+{{- printf "%s" $fullname -}}
+{{- else -}}
+{{- printf "%s-config" $fullname | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
